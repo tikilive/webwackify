@@ -205,10 +205,5 @@ module.exports = function webwackify(fn, fnModuleId) {
     src = bundleWithBrowserify(fn);
   }
 
-  var blob = new Blob([src], { type: 'text/javascript' });
-  var URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
-  var workerUrl = URL.createObjectURL(blob);
-  var worker = new Worker(workerUrl);
-  worker.objectURL = workerUrl;
-  return worker;
+  return src;
 };
